@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MyPokéPack</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dashboard-page">
+    <div class="pack-overlay" aria-hidden="true"></div>
+    <div class="container">
+        <div class="header dashboard-header">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true"></div>
+                <div>
+                    <div class="brand-name">MyPokéPack</div>
+                    <div class="brand-subtitle">Bienvenue, {{.User}}</div>
+                </div>
+            </div>
+
+            <div class="dashboard-topbar">
+                <a class="btn btn-secondary" href="/logout">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
