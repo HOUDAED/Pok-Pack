@@ -97,6 +97,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
@@ -142,4 +143,13 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	default:
 		http.Redirect(w, r, "/inscription", http.StatusSeeOther)
 	}
+}
+
+func LogoutHandler(w http.ResponseWriter, r *http.Request) {
+	sid := getSessionIDFromRequest(r)
+	if sid != "" {
+		_ = DeleteSession(sid)
+	}
+	clearSessionCookie(w)
+	http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
