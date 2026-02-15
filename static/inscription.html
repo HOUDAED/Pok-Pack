@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - MyPokéPack</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true"></div>
+                <div>
+                    <div class="brand-name">MyPokéPack</div>
+                </div>
+            </div>
+
+            <nav class="tabs" aria-label="Navigation d'authentification">
+                <a class="tab" href="/">Connexion</a>
+                <a class="tab active" href="/inscription">Inscription</a>
+            </nav>
+        </div>
+
+        {{if .Error}}
+            <div class="notice notice-error">{{.Error}}</div>
+        {{end}}
+
+        <form id="inscriptionForm" action="/register" method="POST">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" required placeholder="Entrez votre nom d'utilisateur" minlength="3">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <div class="input-row">
+                    <input type="password" id="password" name="password" required placeholder="••••••••" minlength="8" autocomplete="new-password">
+                    <button type="button" class="input-action" data-toggle-password="password" aria-label="Afficher le mot de passe" aria-pressed="false">
+                        Afficher
+                    </button>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div>
+
+</body>
+</html>
