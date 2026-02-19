@@ -183,9 +183,27 @@
 }
 
 .sidebar-title {
-    font-weight: 950;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
     letter-spacing: 0.2px;
-    line-height: 1.05;
+}
+
+.sidebar-user {
+  font-weight: 900;
+  background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.72));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sidebar-title-suffix {
+  font-weight: 800;
+  opacity: 0.92;
+}
+
+.sidebar-sub strong.sidebar-user {
+  font-weight: 800;
 }
 
 .sidebar-sub {

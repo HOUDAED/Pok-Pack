@@ -36,7 +36,7 @@ type AppBaseData struct {
 
 func renderApp(w http.ResponseWriter, contentFile string, data AppBaseData) {
 	t := template.Must(template.ParseFiles(
-		"static/app_layout.html",
+		"web/templates/app_layout.html",
 		contentFile,
 	))
 	_ = t.Execute(w, data)

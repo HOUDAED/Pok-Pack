@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	pok "pok/src"
+	pok "pok/internal/pok"
 )
 
 func main() {
@@ -20,9 +20,8 @@ func main() {
 	}
 	http.HandleFunc("/", pok.HomeHandler)
 	http.HandleFunc("/login", pok.RedirectIfAuthenticated(pok.LoginHandler))
-	http.HandleFunc("/connexion", pok.RedirectIfAuthenticated(pok.LoginHandler))
 	http.HandleFunc("/register", pok.RedirectIfAuthenticated(pok.RegisterHandler))
-	http.HandleFunc("/inscription", pok.RedirectIfAuthenticated(pok.RegisterHandler))
+
 
 	// Routes protégées (auth requise)
 	http.HandleFunc("/dashboard", pok.DashboardHandler)
@@ -32,6 +31,6 @@ func main() {
 	http.HandleFunc("/card/add", pok.AddCardHandler)
 	http.HandleFunc("/stats", pok.StatsHandler)
 	http.HandleFunc("/logout", pok.LogoutHandler)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

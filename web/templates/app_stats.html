@@ -4,7 +4,7 @@
         <div class="h-title">Statistiques</div>
         <div class="h-sub">Graphes • types dominants • Pokémon le plus obtenu</div>
     </div>
-    <div class="badge">📊 Live • Glow</div>
+    <div class="badge">📊 stat</div>
 </div>
 
 {{if .NoticeError}}
@@ -39,8 +39,8 @@
 
         <div class="grid-2">
             <div class="chart" data-chart="radial" data-series="{{.TypesChartJSON}}">
-                <div class="chart-title">Répartition des types (circulaire)</div>
-                <svg viewBox="0 0 260 260" role="img" aria-label="Radial chart types">
+                <div class="chart-title">Répartition des types </div>
+                <svg viewBox="0 0 260 260" role="img" aria-label="Répartition des types (total = occurrences de types)">
                     <g class="radial"></g>
                 </svg>
                 <div class="chart-legend" data-chart-legend></div>

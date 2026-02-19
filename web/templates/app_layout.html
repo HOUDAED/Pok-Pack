@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.PageTitle}} - MyPokéPack</title>
+    <title>{{.PageTitle}} - {{.User}}PokéPack</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/app.css">
     <script src="/static/app.js" defer></script>
@@ -16,8 +16,12 @@
             <div class="sidebar-brand">
                 <div class="sidebar-mark" aria-hidden="true"></div>
                 <div>
-                    <div class="sidebar-title">MyPokéPack</div>
-                    <div class="sidebar-sub">Bienvenue, {{.User}}</div>
+                    <div class="sidebar-title">
+                        <span class="sidebar-user">{{.User}}</span><span class="sidebar-title-suffix">PokéPack</span>
+                    </div>
+                    <div class="sidebar-sub">
+                        Bienvenue, <strong class="sidebar-user">{{.User}}</strong>
+                    </div>
                 </div>
             </div>
 

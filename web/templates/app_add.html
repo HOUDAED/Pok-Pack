@@ -7,7 +7,7 @@
 </div>
 
 {{if .NoticeError}}
-    <div class="notice error" style="margin-bottom:12px;">{{.NoticeError}}</div>
+<div class="notice error" style="margin-bottom:12px;">{{.NoticeError}}</div>
 {{end}}
 
 <div class="panel">
@@ -15,7 +15,8 @@
         <form method="POST" action="/card/add" class="row" data-add-card-form>
             <div>
                 <label class="stat-label" style="display:block; margin-bottom:8px;">ID Pokémon</label>
-                <input class="app-input" type="number" name="pokemon_id" min="1" max="1025" placeholder="ex: 25" required data-add-card-id>
+                <input class="app-input" type="number" name="pokemon_id" min="1" max="1025" placeholder="ex: 25"
+                    required data-add-card-id>
                 <div class="h-sub" style="margin-top:8px;">L’aperçu utilise PokeAPI côté navigateur.</div>
             </div>
             <div>

@@ -18,7 +18,7 @@ type RegisterViewData struct {
 }
 
 func renderStatic(w http.ResponseWriter, filename string, data any) {
-	t := template.Must(template.ParseFiles("static/" + filename))
+	t := template.Must(template.ParseFiles( filename))
 	_ = t.Execute(w, data)
 }
 
@@ -51,7 +51,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Query().Get("error") == "1" {
 			data.Error = "Identifiants incorrects."
 		}
-		renderStatic(w, "connexion.html", data)
+		renderStatic(w, "web/templates/connexion.html", data)
 		return
 	case http.MethodPost:
 		if err := r.ParseForm(); err != nil {
@@ -100,11 +100,11 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		renderStatic(w, "inscription.html", RegisterViewData{})
+		renderStatic(w, "web/templates/inscription.html", RegisterViewData{})
 		return
 	case http.MethodPost:
 		if err := r.ParseForm(); err != nil {
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Formulaire invalide."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Formulaire invalide."})
 			return
 		}
 
@@ -116,24 +116,24 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		password := r.FormValue("password")
 
 		if pseudo == "" || email == "" || password == "" {
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Merci de remplir tous les champs."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Merci de remplir tous les champs."})
 			return
 		}
 		if IsEmailTaken(email) {
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Cet email est déjà utilisé."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Cet email est déjà utilisé."})
 			return
 		}
 		if IsPseudoTaken(pseudo) {
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Ce pseudo est déjà pris."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Ce pseudo est déjà pris."})
 			return
 		}
 		if !IsPasswordValid(password) {
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Mot de passe non conforme aux règles CNIL."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Mot de passe non conforme aux règles CNIL."})
 			return
 		}
 		if err := CreateUser(pseudo, email, password); err != nil {
 			log.Printf("Erreur création utilisateur : %v", err)
-			renderStatic(w, "inscription.html", RegisterViewData{Error: "Erreur lors de la création du compte."})
+			renderStatic(w, "web/templates/inscription.html", RegisterViewData{Error: "Erreur lors de la création du compte."})
 			return
 		}
 

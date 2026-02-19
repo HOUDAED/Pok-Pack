@@ -40,7 +40,7 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		renderApp(w, "static/app_home.html", AppBaseData{
+		renderApp(w, "web/templates/app_home.html", AppBaseData{
 			PageTitle:      "Accueil",
 			User:           u.Pseudo,
 			Active:         "home",
@@ -78,7 +78,7 @@ func OpenPackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		renderApp(w, "static/app_pack.html", AppBaseData{
+		renderApp(w, "web/templates/app_pack.html", AppBaseData{
 			PageTitle: "Ouvrir un pack",
 			User:      u.Pseudo,
 			Active:    "pack",

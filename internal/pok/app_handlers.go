@@ -13,7 +13,7 @@ func PackPageHandler(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, "/pack", http.StatusSeeOther)
 			return
 		}
-		renderApp(w, "static/app_pack.html", AppBaseData{
+		renderApp(w, "web/templates/app_pack.html", AppBaseData{
 			PageTitle: "Ouvrir un pack",
 			User:      u.Pseudo,
 			Active:    "pack",
@@ -39,7 +39,7 @@ func CollectionHandler(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Query().Get("added") == "1" {
 			notice = "Carte ajoutée à ta collection."
 		}
-		renderApp(w, "static/app_collection.html", AppBaseData{
+		renderApp(w, "web/templates/app_collection.html", AppBaseData{
 			PageTitle:     "Collection",
 			User:          u.Pseudo,
 			Active:        "collection",
@@ -53,7 +53,7 @@ func AddCardHandler(w http.ResponseWriter, r *http.Request) {
 	RequireAuth(func(w http.ResponseWriter, r *http.Request, u User) {
 		switch r.Method {
 		case http.MethodGet:
-			renderApp(w, "static/app_add.html", AppBaseData{
+			renderApp(w, "web/templates/app_add.html", AppBaseData{
 				PageTitle: "Ajouter une carte",
 				User:      u.Pseudo,
 				Active:    "add",
@@ -61,7 +61,7 @@ func AddCardHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		case http.MethodPost:
 			if err := r.ParseForm(); err != nil {
-				renderApp(w, "static/app_add.html", AppBaseData{
+				renderApp(w, "web/templates/app_add.html", AppBaseData{
 					PageTitle:     "Ajouter une carte",
 					User:          u.Pseudo,
 					Active:        "add",
@@ -73,7 +73,7 @@ func AddCardHandler(w http.ResponseWriter, r *http.Request) {
 			idStr := r.FormValue("pokemon_id")
 			pid, err := strconv.Atoi(idStr)
 			if err != nil || pid < 1 || pid > 1025 {
-				renderApp(w, "static/app_add.html", AppBaseData{
+				renderApp(w, "web/templates/app_add.html", AppBaseData{
 					PageTitle:   "Ajouter une carte",
 					User:        u.Pseudo,
 					Active:      "add",
@@ -85,7 +85,7 @@ func AddCardHandler(w http.ResponseWriter, r *http.Request) {
 			card, err := fetchPokemonCard(pid)
 			if err != nil {
 				log.Printf("Erreur PokeAPI add id=%d: %v", pid, err)
-				renderApp(w, "static/app_add.html", AppBaseData{
+				renderApp(w, "web/templates/app_add.html", AppBaseData{
 					PageTitle:   "Ajouter une carte",
 					User:        u.Pseudo,
 					Active:      "add",
@@ -144,7 +144,7 @@ func StatsHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		renderApp(w, "static/app_stats.html", AppBaseData{
+		renderApp(w, "web/templates/app_stats.html", AppBaseData{
 			PageTitle:         "Statistiques",
 			User:              u.Pseudo,
 			Active:            "stats",
