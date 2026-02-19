@@ -7,8 +7,9 @@ import (
 	"time"
 )
 
-// currentUser returns the authenticated user from the session cookie.
-// ok=false means unauthenticated.
+// currentUser récupère l'utilisateur actuellement connecté à partir de la session.
+// Elle retourne l'utilisateur, un booléen indiquant s'il est connecté, et une erreur éventuelle.
+
 func currentUser(r *http.Request) (u User, ok bool, err error) {
 	sid := getSessionIDFromRequest(r)
 	if sid == "" {
@@ -24,7 +25,9 @@ func currentUser(r *http.Request) (u User, ok bool, err error) {
 	return u, true, nil
 }
 
-// RequireAuth protects a handler: unauthenticated users are redirected to /login.
+// RequireAuth permet de protéger une route en vérifiant que l'utilisateur est authentifié.
+// Si l'utilisateur n'est pas authentifié, il est redirigé vers la page de connexion.
+
 func RequireAuth(next func(http.ResponseWriter, *http.Request, User)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		u, ok, err := currentUser(r)
@@ -41,7 +44,8 @@ func RequireAuth(next func(http.ResponseWriter, *http.Request, User)) http.Handl
 	}
 }
 
-// RedirectIfAuthenticated prevents logged-in users from seeing login/register pages.
+// RedirectIfAuthenticated redirige les utilisateurs authentifiés vers le dashboard.
+
 func RedirectIfAuthenticated(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, ok, err := currentUser(r)

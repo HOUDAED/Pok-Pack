@@ -71,6 +71,7 @@ func IsPasswordValid(password string) bool {
 	return hasUpper && hasLower && hasDigit && hasSpecial
 }
 
+// HashPassword génère un hash sécurisé du mot de passe en utilisant bcrypt.
 func HashPassword(password string) (string, error) {
 	hashed, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {

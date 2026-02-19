@@ -40,8 +40,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
 
-// LoginHandler serves the login form on GET and processes login on POST.
-// It is mounted on both /login and /connexion to match the HTML form action.
+
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:

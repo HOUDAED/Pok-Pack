@@ -1,0 +1,43 @@
+{{define "content"}}
+<div class="topbar">
+    <div>
+        <div class="h-title">Ouvrir un pack</div>
+        <div class="h-sub">Booster • flash • 3 cartes • holographique</div>
+    </div>
+</div>
+
+{{if .NoticeError}}
+    <div class="notice error" style="margin-bottom:12px;">{{.NoticeError}}</div>
+{{end}}
+
+<div class="panel">
+    <div class="panel-inner">
+        <div class="pack-stage">
+            <div class="booster" aria-hidden="true">
+                <div class="booster-top"></div>
+                <div class="booster-rip"></div>
+            </div>
+            <form method="POST" action="/pack/open" class="open-pack">
+                <button type="submit" class="btn-app pack-button" data-pack-open>
+                    Ouvrir un pack
+                </button>
+                <div class="h-sub" style="text-align:center; max-width:520px;">Un pack contient 3 Pokémon tirés aléatoirement (PokeAPI). Les cartes sont ajoutées à ta collection.</div>
+            </form>
+        </div>
+
+        {{if .Opened}}
+            <div style="margin-top:14px;" class="chart-title">Cartes obtenues</div>
+                <div class="notice success pack-added">+3 cartes ajoutées à ta collection</div>
+            <div class="cards-grid" data-animate-cards>
+                {{range .Opened}}
+                    <div class="poke-card" data-new-card>
+                        <div class="poke-img"><img src="{{.ImageURL}}" alt="{{.Name}}"></div>
+                        <div class="poke-name">{{.Name}}</div>
+                        <div class="types" data-types="{{.Types}}">{{.Types}}</div>
+                    </div>
+                {{end}}
+            </div>
+        {{end}}
+    </div>
+</div>
+{{end}}

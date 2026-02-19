@@ -15,7 +15,13 @@ function initPasswordToggles() {
     });
 }
 
+function initInscriptionForm() {
+    //la validation est gérée côté serveur (POST /inscription).
+}
 
+function initConnexionForm() {
+  //la validation est gérée côté serveur (POST /connexion).
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initPasswordToggles();

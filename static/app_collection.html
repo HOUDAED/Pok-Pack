@@ -1,0 +1,41 @@
+{{define "content"}}
+<div class="topbar">
+    <div>
+        <div class="h-title">Collection</div>
+        <div class="h-sub">Recherche + filtre par type • uniquement ta collection</div>
+    </div>
+</div>
+
+{{if .NoticeSuccess}}
+    <div class="notice success" style="margin-bottom:12px;">{{.NoticeSuccess}}</div>
+{{end}}
+
+<div class="panel">
+    <div class="panel-inner">
+        <div class="row" style="margin-bottom:12px;">
+            <div>
+                <label class="stat-label" style="display:block; margin-bottom:8px;">Recherche</label>
+                <input class="app-input" type="text" placeholder="Rechercher un Pokémon…" data-collection-search>
+            </div>
+            <div>
+                <label class="stat-label" style="display:block; margin-bottom:8px;">Filtre type</label>
+                <input class="app-input" type="text" placeholder="ex: fire, water…" data-collection-type>
+            </div>
+        </div>
+
+        {{if not .Collection}}
+            <div class="notice" style="margin-bottom:12px;">Aucune carte pour le moment. Ouvre ton premier pack !</div>
+        {{end}}
+
+        <div class="cards-grid" data-collection-grid>
+            {{range .Collection}}
+                <div class="poke-card" data-name="{{.Name}}" data-types="{{.Types}}">
+                    <div class="poke-img"><img src="{{.ImageURL}}" alt="{{.Name}}"></div>
+                    <div class="poke-name">{{.Name}}</div>
+                    <div class="types" data-types="{{.Types}}">{{.Types}}</div>
+                </div>
+            {{end}}
+        </div>
+    </div>
+</div>
+{{end}}

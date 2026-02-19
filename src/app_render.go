@@ -21,7 +21,11 @@ type AppBaseData struct {
 	RarestName  string
 	RarestCount int
 
-	
+	// Pack
+	Opened []Card
+
+	// Collection
+	Collection []Card
 
 	// Stats
 	MostObtainedName  string

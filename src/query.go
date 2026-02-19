@@ -45,3 +45,15 @@ func DeleteAllSessions() error {
 	return err
 }
 
+func InsertCard(userID int, pokemonID int, name string, types string, imageURL string, obtainedAt int64) error {
+	_, err := pokdb.Exec(
+		"INSERT INTO cards (user_id, pokemon_id, name, types, image_url, obtained_at) VALUES (?, ?, ?, ?, ?, ?)",
+		userID,
+		pokemonID,
+		name,
+		types,
+		imageURL,
+		obtainedAt,
+	)
+	return err
+}

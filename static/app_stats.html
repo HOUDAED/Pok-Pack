@@ -1,0 +1,59 @@
+{{define "content"}}
+<div class="topbar">
+    <div>
+        <div class="h-title">Statistiques</div>
+        <div class="h-sub">Graphes • types dominants • Pokémon le plus obtenu</div>
+    </div>
+    <div class="badge">📊 Live • Glow</div>
+</div>
+
+{{if .NoticeError}}
+    <div class="notice error" style="margin-bottom:12px;">{{.NoticeError}}</div>
+{{end}}
+
+<div class="panel">
+    <div class="panel-inner">
+        <div class="grid-3 stats-strip" style="margin-bottom:14px;">
+            <div class="stat-card">
+                <div class="stat-label">Total cartes</div>
+                <div class="stat-value"><span class="count-up" data-count="{{.TotalCards}}">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Types distincts</div>
+                <div class="stat-value"><span class="count-up" data-count="{{.DistinctTypes}}">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pokémon le plus obtenu</div>
+                {{if .MostObtainedName}}
+                    <div class="h-sub" style="margin-top:8px;">{{.MostObtainedCount}} fois</div>
+                    <div class="poke-card stats-spotlight" style="margin-top:10px;">
+                        <div class="poke-img"><img src="{{.MostObtainedImage}}" alt="{{.MostObtainedName}}"></div>
+                        <div class="poke-name">{{.MostObtainedName}}</div>
+                        <div class="types" data-types="{{.MostObtainedTypes}}">{{.MostObtainedTypes}}</div>
+                    </div>
+                {{else}}
+                    <div class="h-sub" style="margin-top:10px;">Aucune donnée — ouvre un pack.</div>
+                {{end}}
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="chart" data-chart="radial" data-series="{{.TypesChartJSON}}">
+                <div class="chart-title">Répartition des types (circulaire)</div>
+                <svg viewBox="0 0 260 260" role="img" aria-label="Radial chart types">
+                    <g class="radial"></g>
+                </svg>
+                <div class="chart-legend" data-chart-legend></div>
+            </div>
+
+            <div class="chart" data-chart="bars" data-series="{{.TypesChartJSON}}">
+                <div class="chart-title">Nombre de cartes par type</div>
+                <svg viewBox="0 0 600 220" role="img" aria-label="Bar chart types">
+                    <g class="bars"></g>
+                </svg>
+                <div class="chart-legend" data-chart-legend></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
