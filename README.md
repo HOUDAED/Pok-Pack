@@ -8,7 +8,7 @@ Une application web interactive pour gérer votre collection de cartes Pokémon.
 - **📦 Ouverture de Packs** : Obtenez des cartes Pokémon aléatoires.
 - **🏆 Collection Personnelle** : Consultez toutes les cartes que vous possédez avec leurs détails.
 - **🎨 Statistiques Détaillées** : Visualisez des statistiques sur votre collection. (types, rareté, etc.)
-- **🔍 Search/add manual** : Recherchez et ajoutez n'importe quel Pokémon (ID 1-1025) à votre collection.
+- **🔍 Search/Add manual** : Recherchez et ajoutez n'importe quel Pokémon (ID 1-1025) à votre collection.
 - **👤 Dashboard** : Vue d'ensemble de votre progression et de vos cartes récentes.
 - **💾 Persistance des Données** : Toutes vos données sont sauvegardées localement.
 
@@ -92,7 +92,7 @@ L'application démarre automatiquement :
 
 Ouvrez votre navigateur et accédez à : **http://localhost:8080**
 
-## 📋 Flux Utilisateur
+## 📋 Utilisation
 
 ### 1. **Inscription**
 - Créez un compte avec un pseudo et un email uniques.
