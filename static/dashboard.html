@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - MyPokéPack</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
+    <script src="/static/dashboard.js" defer></script>
 </head>
 <body class="dashboard-page">
     <div class="pack-overlay" aria-hidden="true"></div>
@@ -20,6 +22,59 @@
 
             <div class="dashboard-topbar">
                 <a class="btn btn-secondary" href="/logout">Déconnexion</a>
+            </div>
+        </div>
+
+        {{if .Error}}
+            <div class="notice notice-error">{{.Error}}</div>
+  
+            {{end}}
+
+        <div class="dashboard-metrics">
+            <div class="metric">
+                <div class="metric-label">Nombre total de cartes possédées</div>
+                <div class="metric-value"><span class="count-up" data-count="{{.TotalCards}}">0</span></div>
+            </div>
+            <form method="POST" action="/pack/open" class="open-pack">
+                <button type="submit" class="btn btn-primary btn-pack">Ouvrir un pack</button>
+                <div class="page-hint">Un pack contient 3 cartes.</div>
+            </form>
+        </div>
+
+        {{if .Opened}}
+            <div class="section">
+                <div class="section-title">Cartes obtenues</div>
+                <div class="cards-grid">
+                    {{range .Opened}}
+                        <div class="card-item">
+                            <div class="card-image">
+                                <img src="{{.ImageURL}}" alt="{{.Name}}">
+                            </div>
+                            <div class="card-name">{{.Name}}</div>
+                            <div class="card-types" data-types="{{.Types}}">{{.Types}}</div>
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+
+        <div class="section">
+            <div class="section-title">Collection personnelle</div>
+
+            {{if not .Collection}}
+                <div class="empty-state">Aucune carte pour le moment. Ouvre ton premier pack !</div>
+            {{end}}
+
+            <div class="cards-grid">
+                {{range .Collection}}
+                    <div class="card-item">
+                        <div class="card-image">
+                            <img src="{{.ImageURL}}" alt="{{.Name}}">
+                        </div>
+                        <div class="card-name">{{.Name}}</div>
+                        <div class="card-types" data-types="{{.Types}}">{{.Types}}</div>
+                    </div>
+                {{end}}
             </div>
         </div>
     </div>

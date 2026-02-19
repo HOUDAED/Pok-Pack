@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.PageTitle}} - MyPokéPack</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/app.css">
+    <script src="/static/app.js" defer></script>
+</head>
+<body class="app-body">
+    <div class="pack-overlay" aria-hidden="true"></div>
+
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navigation">
+            <div class="sidebar-brand">
+                <div class="sidebar-mark" aria-hidden="true"></div>
+                <div>
+                    <div class="sidebar-title">MyPokéPack</div>
+                    <div class="sidebar-sub">Bienvenue, {{.User}}</div>
+                </div>
+            </div>
+
+            <nav class="nav">
+    <a href="/dashboard" class="{{if eq .Active "home"}}active{{end}}">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/>
+        </svg>
+        <span class="nav-label">Accueil</span>
+    </a>
+
+    <div class="nav-sep" aria-hidden="true"></div>
+
+    <a href="/logout">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 3v18"/>
+        </svg>
+        <span class="nav-label">Déconnexion</span>
+    </a>
+</nav>
+
+        </aside>
+
+        <main class="main" role="main">
+            {{template "content" .}}
+        </main>
+    </div>
+</body>
+</html>
