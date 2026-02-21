@@ -21,7 +21,7 @@ Une application web interactive pour gérer votre collection de cartes Pokémon.
 - **bcrypt** (`golang.org/x/crypto`) - Sécurisation des mots de passe.
 
 ### Frontend
-- **HTML/CSS/JavaScript** - Interface utilisateur responsive.
+- **HTML/CSS/JavaScript** - Interface utilisateur responsive. (CSS aidé avec IA)
 - **CSS Grid/Flexbox** - Mise en page moderne.
 
 ## 📁 Structure du Projet
