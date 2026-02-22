@@ -73,13 +73,14 @@ Pok-Pack/
 ### Installation
 
 1. **Cloner le projet** (ou télécharger)
+git clone https://github.com/HOUDAED/Pok-Pack.git
 ```bash
 cd Pok-Pack
 ```
 
 2. **Démarrer l'application**
 ```bash
-go run ./cmd/server/main.go
+go run ./cmd/server
 ```
 
 L'application démarre automatiquement :
@@ -96,7 +97,7 @@ Ouvrez votre navigateur et accédez à : **http://localhost:8080**
 
 ### 1. **Inscription**
 - Créez un compte avec un pseudo et un email uniques.
-- Obtenez 5 cartes aléatoires de démarrage.
+- Un mot de passe conforme aux recommandations de la CNIL 
 
 ### 2. **Connexion**
 - Connectez-vous avec votre pseudo/email et mot de passe.
@@ -107,7 +108,7 @@ Ouvrez votre navigateur et accédez à : **http://localhost:8080**
 - Découvrez les statistiques par type.
 
 ### 4. **Ouvrir des Packs**
-- Cliquez sur "Ouvrir un pack" pour obtenir 5 cartes aléatoires.
+- Cliquez sur "Ouvrir un pack" pour obtenir 3 cartes aléatoires.
 - Chaque ouverture génère de nouvelles cartes.
 
 ### 5. **Collection**
@@ -167,7 +168,7 @@ L'application récupère les données des Pokémon depuis **PokéAPI** :
 ```bash
 # Supprimez la base de données existante et relancez
 rm pok.db
-go run ./cmd/server/main.go
+go run ./cmd/server
 ```
 
 ### Erreur de connexion à PokéAPI
